@@ -1,0 +1,20 @@
+version: '3'
+services:
+  e2e-1:
+    image: cyp-dock-mocha-report
+    command: npx cypress run --spec spec1.js
+    volumes:
+      - ./cypress/videos:/cypress-docker/cypress/videos
+      - ./cypress/reports:/cypress-docker/cypress/reports
+  e2e-2:
+    image: cyp-dock-mocha-report
+    command: npx cypress run --spec spec2.js
+    volumes:
+      - ./cypress/videos:/cypress-docker/cypress/videos
+      - ./cypress/reports:/cypress-docker/cypress/reports
+  e2e-3:
+    image: cyp-dock-mocha-report
+    command: npx cypress run --spec spec3.js
+    volumes:
+      - ./cypress/videos:/cypress-docker/cypress/videos
+      - ./cypress/reports:/cypress-docker/cypress/reports
