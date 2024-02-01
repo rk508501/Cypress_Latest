@@ -4,28 +4,50 @@ const path = require('path');
 
 module.exports = defineConfig({
   e2e: {
-    "video":false,
-    "blockHosts":["www.google-analytics.com", "https://googleads.g.doubleclick.net/**/*"],
-    "reporter": "cypress-junit-reporter",
+    "video": false,
+    blockHosts: [
+      'pagead2.googlesyndication.com',
+      'www.googletagservices.com',
+      'www.google.com',
+      'securepubads.g.doubleclick.net',
+      'www.gstatic.com',
+      'cdn.ad.plus',
+      'www.google-analytics.com',
+    ],
+    "reporter": 'junit',
     "reporterOptions": {
-      "mochaFile": "cypress/results/junit/test-results.[hash].xml",
-      "toConsole": true
+      "mochaFile": 'JUnit_Result.xml',
+      "toConsole": true,
     },
-
-    "reporter": "cypress-multi-reporters",
-    "reporterOptions": {
-      "reporterEnabled": "mochawesome, junit",
-      "mochawesomeReporterOptions": {
-        "reportDir": "mochawesome-report",
-        "reportFilename": "report"
-      },
-      "junitReporterOptions": {
-        "mochaFile": "cypress/results/test-results.[hash].xml",
-        "toConsole": true
-      }
-    },
-    setupNodeEvents(on, config) {
+    async setupNodeEvents(on, config) {
       //require("./cypress/support/dockerComoseGenerator")
+      on('task', {
+        xmlToJson(filePath) {
+          return new Promise((resolve, reject) => {
+            const xml2js = require('xml2js');
+            const fs = require('fs');
+
+            fs.readFile(filePath, 'utf8', (err, xmlData) => {
+              if (err) {
+                reject(err);
+                return;
+              }
+
+              const parser = new xml2js.Parser();
+              parser.parseString(xmlData, (err, jsonData) => {
+                if (err) {
+                  reject(err);
+                  return;
+                }
+
+                resolve(jsonData);
+              });
+            });
+          });
+        },
+      });
+
+      return config
     },
   },
 });
