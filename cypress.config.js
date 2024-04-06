@@ -1,6 +1,7 @@
 const { defineConfig } = require("cypress");
 const fs = require('fs');
 const path = require('path');
+const cypressSplit = require('cypress-split')
 
 module.exports = defineConfig({
   e2e: {
@@ -20,6 +21,9 @@ module.exports = defineConfig({
       "toConsole": true,
     },
     async setupNodeEvents(on, config) {
+
+      cypressSplit(on, config)
+
       //require("./cypress/support/dockerComoseGenerator")
       on('task', {
         xmlToJson(filePath) {
