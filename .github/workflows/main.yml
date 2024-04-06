@@ -1,0 +1,12 @@
+name: Hello World
+
+on:
+  push: # This workflow runs whenever there's a push to the repository
+
+jobs:
+  say-hello:
+    runs-on: ubuntu-latest  # This workflow runs on a virtual machine with Ubuntu
+
+    steps:
+      - uses: actions/checkout@v3  # Checks out the code from the repository
+      - run: echo "Hello!"        # Prints "Hello!" to the workflow log
