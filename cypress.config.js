@@ -4,6 +4,14 @@ const path = require('path');
 const cypressSplit = require('cypress-split')
 
 module.exports = defineConfig({
+  reporter: 'cypress-mochawesome-reporter',
+  reporterOptions: {
+    charts: true,
+    reportPageTitle: 'GitHub Actions for Cypress',
+    embeddedScreenshots: true,
+    inlineAssets: true,
+    saveAllAttempts: false,
+  },
   e2e: {
     "video": false,
     blockHosts: [
@@ -15,12 +23,8 @@ module.exports = defineConfig({
       'cdn.ad.plus',
       'www.google-analytics.com',
     ],
-    "reporter": 'junit',
-    "reporterOptions": {
-      "mochaFile": 'JUnit_Result.xml',
-      "toConsole": true,
-    },
     async setupNodeEvents(on, config) {
+      require('cypress-mochawesome-reporter/plugin')(on);
 
       cypressSplit(on, config)
 
