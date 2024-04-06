@@ -28,33 +28,6 @@ module.exports = defineConfig({
 
       cypressSplit(on, config)
 
-      //require("./cypress/support/dockerComoseGenerator")
-      on('task', {
-        xmlToJson(filePath) {
-          return new Promise((resolve, reject) => {
-            const xml2js = require('xml2js');
-            const fs = require('fs');
-
-            fs.readFile(filePath, 'utf8', (err, xmlData) => {
-              if (err) {
-                reject(err);
-                return;
-              }
-
-              const parser = new xml2js.Parser();
-              parser.parseString(xmlData, (err, jsonData) => {
-                if (err) {
-                  reject(err);
-                  return;
-                }
-
-                resolve(jsonData);
-              });
-            });
-          });
-        },
-      });
-
       return config
     },
   },
