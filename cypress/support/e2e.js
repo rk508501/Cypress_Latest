@@ -4,7 +4,6 @@ import './commands'
 import 'cypress-map'
 import 'cypress-ag-grid'
 require('@cypress/xpath');
-import 'cypress-aliases'
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')

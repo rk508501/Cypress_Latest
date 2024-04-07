@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuites name="Mocha Tests" time="0.521" tests="1" failures="0">
-  <testsuite name="Root Suite" timestamp="2023-08-21T01:08:58" tests="0" file="cypress\e2e\1-getting-started\mapExamples.cy.js" time="0.000" failures="0">
-  </testsuite>
-  <testsuite name="Testing cy-map" timestamp="2023-08-21T01:08:58" tests="1" time="0.502" failures="0">
-    <testcase name="Testing cy-map HYER-9 Test Cy Integration" time="0.503" classname="HYER-9 Test Cy Integration">
-    </testcase>
-  </testsuite>
-</testsuites>

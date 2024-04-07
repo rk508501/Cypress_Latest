@@ -1,5 +1,5 @@
 node_modules
-
-node_modules/
 cypress/reports
 JUnit_Result.xml
+node_modules/
+mochawesome-report
