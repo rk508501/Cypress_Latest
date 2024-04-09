@@ -5,7 +5,4 @@ jobs:
     uses: bahmutov/cypress-workflows/.github/workflows/split.yml@v2.3.1
     with:
       nE2E: 3
-      start: npm start
-      # merge all test reports into one
-      # https://github.com/bahmutov/cypress-workflows
       marge: true
