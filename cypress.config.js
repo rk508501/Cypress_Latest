@@ -37,6 +37,9 @@ module.exports = defineConfig({
     },
     setupNodeEvents(on, config) {
       //require("./cypress/support/dockerComoseGenerator")
+      cypressSplit(on, config)
+      // IMPORTANT: return the config object
+      return config
     },
   },
 });
